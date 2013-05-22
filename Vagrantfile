@@ -58,5 +58,8 @@ Vagrant.configure("2") do |config|
     chef.add_recipe("build-essential")
     chef.add_recipe("git")
     chef.add_recipe("vim")
+
+    # Finally, install the project.
+    chef.add_recipe("symfony2first")
   end
 end
