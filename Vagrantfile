@@ -4,7 +4,7 @@
 # @file
 # Specify settings for a Drupal webserver.
 #
-# Vagrant v1.1.4
+# Vagrant v1.2.7
 #
 Vagrant.configure("2") do |config|
   # Machine settings.
@@ -26,12 +26,6 @@ Vagrant.configure("2") do |config|
 
   # Refresh package list before attempting to install software.
   config.vm.provision :shell, :inline => "apt-get update"
-
-  # Ensure we keep the SSH_AUTH_SOCK variable when sudoing.
-  config.vm.provision :shell do |shell|
-    shell.inline = "touch $1 && chmod 0440 $1 && echo $2 > $1"
-    shell.args = %q{/etc/sudoers.d/root_ssh_agent "Defaults env_keep += \"SSH_AUTH_SOCK\""}
-  end
 
   # Guest machine software specification.
   # Note that, when running `vagrant up`, the cookbooks specified in the
